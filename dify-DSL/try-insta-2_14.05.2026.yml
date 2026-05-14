@@ -1,0 +1,788 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  icon_type: emoji
+  mode: advanced-chat
+  name: try-insta-2
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai:0.4.0@beafb5a726eda839a1839f61a0456ae7e068c98624c53f59b07be9a71fbf72da
+    version: null
+kind: app
+version: 0.6.0
+workflow:
+  conversation_variables:
+  - description: ''
+    id: 2af339de-b4e6-445a-8cbf-e9c0da3304c9
+    name: lead_status
+    selector:
+    - conversation
+    - lead_status
+    value: normal
+    value_type: string
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        attachment_image_file_size_limit: 2
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        file_upload_limit: 50
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        single_chunk_attachment_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: question-classifier
+      id: 1776196772334-source-1777930654940-target
+      selected: false
+      source: '1776196772334'
+      sourceHandle: source
+      target: '1777930654940'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: llm-source-answer-target
+      selected: false
+      source: llm
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 17779338523370-source-17779338829760-target
+      selected: false
+      source: '17779338523370'
+      sourceHandle: source
+      target: '17779338829760'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1778705062518-source-17779338523370-target
+      selected: false
+      source: '1778705062518'
+      sourceHandle: source
+      target: '17779338523370'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: llm
+      id: 1777930654940-1778708817721-llm-target
+      selected: false
+      source: '1777930654940'
+      sourceHandle: '1778708817721'
+      target: llm
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: llm
+      id: 1777930654940-1778708918432-17787090988200-target
+      selected: false
+      source: '1777930654940'
+      sourceHandle: '1778708918432'
+      target: '17787090988200'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 17787090988200-source-17787091219680-target
+      selected: false
+      source: '17787090988200'
+      sourceHandle: source
+      target: '17787091219680'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: knowledge-retrieval
+      id: 1777930654940-1778709206657-1778705062518-target
+      selected: false
+      source: '1777930654940'
+      sourceHandle: '1778709206657'
+      target: '1778705062518'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 17787094780140-source-17787094780141-target
+      selected: false
+      source: '17787094780140'
+      sourceHandle: source
+      target: '17787094780141'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: llm
+      id: 1777930654940-1778709436341-17787094780140-target
+      selected: false
+      source: '1777930654940'
+      sourceHandle: '1778709436341'
+      target: '17787094780140'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 17787096935240-source-17787096935241-target
+      selected: false
+      source: '17787096935240'
+      sourceHandle: source
+      target: '17787096935241'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: llm
+      id: 1777930654940-1778709597803-17787096935240-target
+      selected: false
+      source: '1777930654940'
+      sourceHandle: '1778709597803'
+      target: '17787096935240'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 17787097912780-source-17787097912781-target
+      selected: false
+      source: '17787097912780'
+      sourceHandle: source
+      target: '17787097912781'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: llm
+      id: 1777930654940-1778709764500-17787097912780-target
+      selected: false
+      source: '1777930654940'
+      sourceHandle: '1778709764500'
+      target: '17787097912780'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: Начало
+        type: start
+        variables: []
+      height: 73
+      id: '1776196772334'
+      position:
+        x: 183.4248971858541
+        y: 261
+      positionAbsolute:
+        x: 183.4248971858541
+        y: 261
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-5.4
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: c9402fda-56f6-4604-b939-73feceb7d572
+          role: system
+          text: 'Отвечай: Здравствуйте! Вам нужна подготовка к ЕГЭ или ОГЭ? (Если
+            это аккаунт по истории и обществознанию, то "Здравствуйте! Вам нужны история
+            или обществознание? Подготовка к ЕГЭ или ОГЭ?". '
+        selected: false
+        title: LLM
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: llm
+      position:
+        x: 1009.3395735481039
+        y: 183.09304964505776
+      positionAbsolute:
+        x: 1009.3395735481039
+        y: 183.09304964505776
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#llm.text#}}'
+        selected: false
+        title: Ответ
+        type: answer
+        variables: []
+      height: 102
+      id: answer
+      position:
+        x: 1286.2801264866607
+        y: 183.09304964505776
+      positionAbsolute:
+        x: 1286.2801264866607
+        y: 183.09304964505776
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        classes:
+        - id: '1778708817721'
+          label: GREETING OR JUST FIRST MESSAGE
+          name: 'Если клиент просто поздоровался, либо написал какое-либо первое сообщение
+
+            без указания к какому экзамену нужна подготовка. Например "Как к вам записаться?"'
+        - id: '1778708918432'
+          label: EXAM_REQUEST
+          name: Клиент хочет подготовку к ОГЭ/ЕГЭ или сразу указал предмет/экзамен.
+        - id: '1778709206657'
+          label: PRICE_QUESTION
+          name: Клиент спрашивает стоимость, цену, тариф, сколько стоит.
+        - id: '1778709436341'
+          label: GRADES_5_8_NON_MATH
+          name: Клиент просит занятия для 5–8 класса, предмет не математика.
+        - id: '1778709597803'
+          label: NOt_EG_NOT_5_8
+          name: запрос клиента НЕ подготовка к ЕГЭ и ОГЭ и НЕ подготовка в 5-8 классе,
+            то ответ
+        - id: '1778709764500'
+          label: GRADES_5_8_MATH
+          name: Клиент просит математику для 5–8 класса.
+        instructions: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-5.4
+          provider: langgenius/openai/openai
+        query_variable_selector:
+        - '1776196772334'
+        - sys.query
+        selected: false
+        title: Классификатор вопросов
+        type: question-classifier
+        vision:
+          enabled: false
+      height: 346
+      id: '1777930654940'
+      position:
+        x: 451.2878804121118
+        y: 282
+      positionAbsolute:
+        x: 451.2878804121118
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1778705062518'
+          - result
+        isInIteration: false
+        isInLoop: false
+        memory:
+          query_prompt_template: ''
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-5.4
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: c9402fda-56f6-4604-b939-73feceb7d572
+          role: system
+          text: 'Ты отвечаешь только на основании найденных фрагментов базы знаний.
+
+
+            Вопрос пользователя:
+
+            {{#sys.query#}}
+
+
+            Найденная информация:
+
+            {{#context#}}
+
+
+            Правила:
+
+            - Если цена есть в найденной информации — ответь кратко и точно.
+
+            - Не придумывай цены.
+
+            - Если подходящей информации нет — скажи, что не нашёл точной цены.
+
+            - Если вопрос неясный, уточни предмет и формат: ОГЭ/ЕГЭ/индивидуальные
+            занятия.'
+        selected: false
+        title: LLM (1)
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '17779338523370'
+      position:
+        x: 1009.3395735481039
+        y: 408.70970405864557
+      positionAbsolute:
+        x: 1009.3395735481039
+        y: 408.70970405864557
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#17779338523370.text#}}'
+        isInIteration: false
+        isInLoop: false
+        selected: false
+        title: Ответ (1)
+        type: answer
+        variables: []
+      height: 102
+      id: '17779338829760'
+      position:
+        x: 1281.6438631887727
+        y: 408.70970405864557
+      positionAbsolute:
+        x: 1281.6438631887727
+        y: 408.70970405864557
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        dataset_ids:
+        - 72UfEu99fptU7+06ALNLbPOED1UE7NVpiI5VsoDi0pdOdoP8cJ5y5mQfFjsvtnDb
+        metadata_filtering_mode: disabled
+        multiple_retrieval_config:
+          reranking_enable: false
+          reranking_mode: weighted_score
+          score_threshold: null
+          top_k: 4
+          weights:
+            keyword_setting:
+              keyword_weight: 0
+            vector_setting:
+              embedding_model_name: text-embedding-3-small
+              embedding_provider_name: langgenius/openai/openai
+              vector_weight: 1
+            weight_type: customized
+        query_attachment_selector: []
+        query_variable_selector:
+        - sys
+        - query
+        retrieval_mode: multiple
+        selected: false
+        title: Поиск знаний
+        type: knowledge-retrieval
+      height: 90
+      id: '1778705062518'
+      position:
+        x: 751.9381808837387
+        y: 408.70970405864557
+      positionAbsolute:
+        x: 751.9381808837387
+        y: 408.70970405864557
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: false
+        isInLoop: false
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-5.4
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: c9402fda-56f6-4604-b939-73feceb7d572
+          role: system
+          text: сразу приглашаем на пробное занятие
+        selected: false
+        title: LLM (2)
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '17787090988200'
+      position:
+        x: 1009.3395735481039
+        y: 295.1735028284726
+      positionAbsolute:
+        x: 1009.3395735481039
+        y: 295.1735028284726
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#17787090988200.text#}}'
+        desc: ''
+        isInIteration: false
+        isInLoop: false
+        selected: false
+        title: Ответ (2)
+        type: answer
+        variables: []
+      height: 102
+      id: '17787091219680'
+      position:
+        x: 1283.1892842880688
+        y: 295.1735028284726
+      positionAbsolute:
+        x: 1283.1892842880688
+        y: 295.1735028284726
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: false
+        isInLoop: false
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-5.4
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: c9402fda-56f6-4604-b939-73feceb7d572
+          role: system
+          text: Здравствуйте! Извините, пока не беру заказы до 9 класса. Но я зафиксирую
+            ваши контакты на будущее, когда появятся свободные места
+        selected: false
+        title: LLM (3)
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '17787094780140'
+      position:
+        x: 1009.3395735481039
+        y: 519.5333764992696
+      positionAbsolute:
+        x: 1009.3395735481039
+        y: 519.5333764992696
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#17787094780140.text#}}'
+        desc: ''
+        isInIteration: false
+        isInLoop: false
+        selected: false
+        title: Ответ (3)
+        type: answer
+        variables: []
+      height: 102
+      id: '17787094780141'
+      position:
+        x: 1282.4111936082645
+        y: 519.5333764992696
+      positionAbsolute:
+        x: 1282.4111936082645
+        y: 519.5333764992696
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: false
+        isInLoop: false
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-5.4
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: c9402fda-56f6-4604-b939-73feceb7d572
+          role: system
+          text: Здравствуйте! Извините, такие заказы не беру, занимаюсь только подготовкой
+            к ОГЭ и ЕГЭ
+        selected: false
+        title: LLM (4)
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '17787096935240'
+      position:
+        x: 1009.3395735481039
+        y: 633.8945378471716
+      positionAbsolute:
+        x: 1009.3395735481039
+        y: 633.8945378471716
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#17787096935240.text#}}'
+        desc: ''
+        isInIteration: false
+        isInLoop: false
+        selected: false
+        title: Ответ (4)
+        type: answer
+        variables: []
+      height: 102
+      id: '17787096935241'
+      position:
+        x: 1281.643863188773
+        y: 633.8945378471716
+      positionAbsolute:
+        x: 1281.643863188773
+        y: 633.8945378471716
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: false
+        isInLoop: false
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-5.4
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: c9402fda-56f6-4604-b939-73feceb7d572
+          role: system
+          text: Здравствуйте! Извините, я сейчас занимаюсь только подготовкой к экзаменам.
+            Но я могу подобрать вам другого специалиста среди моих коллег-репетиторов.
+            Что думаете?
+        selected: false
+        title: LLM (5)
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '17787097912780'
+      position:
+        x: 1009.3395735481039
+        y: 749.8011202943694
+      positionAbsolute:
+        x: 1009.3395735481039
+        y: 749.8011202943694
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#17787097912780.text#}}'
+        desc: ''
+        isInIteration: false
+        isInLoop: false
+        selected: false
+        title: Ответ (5)
+        type: answer
+        variables: []
+      height: 102
+      id: '17787097912781'
+      position:
+        x: 1286.2693662263482
+        y: 749.8011202943694
+      positionAbsolute:
+        x: 1286.2693662263482
+        y: 749.8011202943694
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: -151.6016685208275
+      y: -116.52864677992761
+      zoom: 0.9889709163809318
+  rag_pipeline_variables: []
