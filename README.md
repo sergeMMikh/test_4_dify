@@ -39,7 +39,8 @@ Optional variables:
 - `DIFY_USER_ID` default: `interactive-console`
 - `LANGFUSE_PUBLIC_KEY`
 - `LANGFUSE_SECRET_KEY`
-- `LANGFUSE_BASE_URL` default in local setup: `http://localhost:3000`
+- `LANGFUSE_PORT` default in local setup: `3001`
+- `LANGFUSE_BASE_URL` default in local setup: `http://localhost:3001`
 
 ## Langfuse
 
@@ -57,14 +58,14 @@ docker compose up -d
 Then open:
 
 ```text
-http://localhost:3000
+http://localhost:3001
 ```
 
 Important:
 
 - the compose file includes Langfuse headless initialization via `LANGFUSE_INIT_*`;
 - you can use `LANGFUSE_INIT_*` to bootstrap an org, project and admin user on a fresh local setup;
-- after `docker compose up -d`, wait until Langfuse becomes ready and then log in at `http://localhost:3000`;
+- after `docker compose up -d`, wait until Langfuse becomes ready and then log in at `http://localhost:3001`;
 - if you set bootstrap credentials in `.env`, log in with `LANGFUSE_INIT_USER_EMAIL` and `LANGFUSE_INIT_USER_PASSWORD`;
 - if you change the project keys in `.env`, keep `LANGFUSE_PUBLIC_KEY` / `LANGFUSE_SECRET_KEY` and `LANGFUSE_INIT_PROJECT_PUBLIC_KEY` / `LANGFUSE_INIT_PROJECT_SECRET_KEY` in sync.
 
