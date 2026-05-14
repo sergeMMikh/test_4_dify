@@ -51,14 +51,10 @@ def main() -> None:
             )
         except DifyClientError as exc:
             print(f"Dify error: {exc}")
-            if exc.trace_url:
-                print(f"Trace URL: {exc.trace_url}")
             continue
 
         conversation_id = reply.conversation_id or conversation_id
         print(f"Dify> {reply.answer}")
-        if reply.trace_url:
-            print(f"Trace URL: {reply.trace_url}")
 
 
 if __name__ == "__main__":
