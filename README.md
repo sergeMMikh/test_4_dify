@@ -1,75 +1,86 @@
 # test_4_dify
 
-Minimal interactive Python app for debugging Dify without Instagram, PostgreSQL or the rest of the original project.
+Минимальное интерактивное Python-приложение для отладки Dify без Instagram, PostgreSQL и остальной части основного проекта.
 
-## What it does
+## Что делает
 
-- loads settings from a local `.env`;
-- asks for user text in a loop;
-- sends the text to Dify via `POST /chat-messages`;
-- prints the Dify response;
-- optionally sends traces to Langfuse;
-- stops when you enter `EXIT`.
+- загружает настройки из локального `.env`;
+- запрашивает текст пользователя в цикле;
+- отправляет текст в Dify через `POST /chat-messages`;
+- печатает ответ Dify;
+- опционально отправляет трассировки в Langfuse;
+- завершает работу после ввода `EXIT`.
 
-## Environment loading
+## Загрузка окружения
 
-The app checks these paths in order:
+Приложение проверяет пути в таком порядке:
 
-1. `DIFY_CONSOLE_ENV_PATH` if the environment variable is set
-2. local `.env` in this directory
+1. `DIFY_CONSOLE_ENV_PATH`, если задана эта переменная окружения
+2. локальный `.env` в этой директории
 3. `C:\task-by-antipov\try_insta\.env`
 
-Create a local `.env` from `.env.example` before running the app:
+Перед запуском создайте локальный `.env` из `.env.example`:
 
 ```powershell
 Copy-Item .env.example .env
 ```
 
-Then fill in the required secrets and any optional local overrides you want to use.
+Затем заполните обязательные секреты и нужные локальные переопределения.
 
-Required variables:
+Обязательные переменные:
 
 - `DIFY_API_KEY`
 
-Optional variables:
+Опциональные переменные:
 
-- `DIFY_API_BASE_URL` default: `https://api.dify.ai/v1`
-- `DIFY_RESPONSE_MODE` default: `blocking`
-- `DIFY_TIMEOUT_SECONDS` default: `30`
-- `DIFY_USER_ID` default: `interactive-console`
+- `DIFY_API_BASE_URL`, по умолчанию: `https://api.dify.ai/v1`
+- `DIFY_RESPONSE_MODE`, по умолчанию: `blocking`
+- `DIFY_TIMEOUT_SECONDS`, по умолчанию: `30`
+- `DIFY_USER_ID`, по умолчанию: `interactive-console`
 - `LANGFUSE_PUBLIC_KEY`
 - `LANGFUSE_SECRET_KEY`
-- `LANGFUSE_PORT` default in local setup: `3001`
-- `LANGFUSE_BASE_URL` default in local setup: `http://localhost:3001`
+- `LANGFUSE_PORT`, по умолчанию для локального запуска: `3001`
+- `LANGFUSE_BASE_URL`, по умолчанию для локального запуска: `http://localhost:3001`
 
 ## Langfuse
 
-Local Langfuse services are defined in [docker-compose.yml](docker-compose.yml).
+Локальные сервисы Langfuse описаны в [docker-compose.yml](docker-compose.yml).
 
-Before starting them, make sure your local `.env` contains valid Langfuse-related secrets.
+Перед запуском убедитесь, что в локальном `.env` заполнены корректные Langfuse-секреты.
 
-Start them with:
+Запуск:
 
 ```powershell
 cd C:\task-by-antipov\test_4_dify
 docker compose up -d
 ```
 
-Then open:
+Затем откройте:
 
 ```text
 http://localhost:3001
 ```
 
-Important:
+Важно:
 
-- the compose file includes Langfuse headless initialization via `LANGFUSE_INIT_*`;
-- you can use `LANGFUSE_INIT_*` to bootstrap an org, project and admin user on a fresh local setup;
-- after `docker compose up -d`, wait until Langfuse becomes ready and then log in at `http://localhost:3001`;
-- if you set bootstrap credentials in `.env`, log in with `LANGFUSE_INIT_USER_EMAIL` and `LANGFUSE_INIT_USER_PASSWORD`;
-- if you change the project keys in `.env`, keep `LANGFUSE_PUBLIC_KEY` / `LANGFUSE_SECRET_KEY` and `LANGFUSE_INIT_PROJECT_PUBLIC_KEY` / `LANGFUSE_INIT_PROJECT_SECRET_KEY` in sync.
+- compose-файл включает headless-инициализацию Langfuse через `LANGFUSE_INIT_*`;
+- `LANGFUSE_INIT_*` можно использовать, чтобы на свежем локальном стенде создать организацию, проект и администратора;
+- после `docker compose up -d` дождитесь готовности Langfuse и войдите на `http://localhost:3001`;
+- если в `.env` заданы bootstrap-учётные данные, входите через `LANGFUSE_INIT_USER_EMAIL` и `LANGFUSE_INIT_USER_PASSWORD`;
+- если меняете ключи проекта в `.env`, держите в синхронизации `LANGFUSE_PUBLIC_KEY` / `LANGFUSE_SECRET_KEY` и `LANGFUSE_INIT_PROJECT_PUBLIC_KEY` / `LANGFUSE_INIT_PROJECT_SECRET_KEY`.
 
-## Run
+## Запуск
+
+Лёгкий режим только для Dify:
+
+```powershell
+cd C:\task-by-antipov\test_4_dify
+.\.venv\Scripts\python.exe light_main.py
+```
+
+`light_main.py` использует только настройки `DIFY_*` из `.env`. Он не импортирует код Langfuse и не требует `docker compose`.
+
+Полный режим с опциональной трассировкой Langfuse:
 
 ```powershell
 cd C:\task-by-antipov\test_4_dify
@@ -78,9 +89,9 @@ python -m venv .venv
 .\.venv\Scripts\python.exe main.py
 ```
 
-## Stop
+## Остановка
 
-Type:
+Введите:
 
 ```text
 EXIT
