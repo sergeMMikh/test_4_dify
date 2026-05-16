@@ -85,5 +85,10 @@ $log.Add('# 9-12. Post-price trial/VK flow')
 $log.Add('Не прогоняется автоматически в живом Dify, пока knowledge base не возвращает релевантную цену. Эти ветки достижимы только после успешного ответа с ценой.')
 $log.Add('')
 
+Add-Dialogue '14. FAQ platform' @('Через какую платформу вы работаете?', 'EXIT')
+Add-Dialogue '14b. FAQ format' @('Это индивидуальные уроки?', 'EXIT')
+Add-Dialogue '14c. FAQ payment' @('Как оплачивать?', 'EXIT')
+Add-Dialogue '14d. FAQ VK' @('У меня нет страницы в ВК, можно в WhatsApp?', 'EXIT')
+
 $log | Set-Content -Path $OutFile -Encoding UTF8
 Get-Content $OutFile -Encoding UTF8
